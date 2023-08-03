@@ -75,6 +75,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func segmentControlChanged(_ sender: Any) {
+        guard let segmentContol = sender as? UISegmentedControl,
+              let currentCityWeatherData = currentCityWeatherData else { return }
+        if segmentContol.selectedSegmentIndex == 0 {
+            self.tempratureLabel.text = "\(currentCityWeatherData.current?.tempC ?? 0)"
+        } else if segmentContol.selectedSegmentIndex == 1 {
+            self.tempratureLabel.text = "\(currentCityWeatherData.current?.tempF ?? 0)"
+        }
     }
     
     func updateUI() {
