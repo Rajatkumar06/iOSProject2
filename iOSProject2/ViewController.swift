@@ -30,29 +30,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "citiesSegue" {
-            if let desination = segue.destination as? CityViewController {
-                desination.savedCitiesResponse = savedCitiesResponse
-            }
-        }
+        guard segue.identifier == "citiesSegue",
+              let desination = segue.destination as? CityViewController else { return }
+        desination.savedCitiesResponse = savedCitiesResponse
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        if let city = searchTextField.text {
-            getWeatherFor(query: city) { weatherData, error in
-                if let weatherData = weatherData {
-                    self.currentCityWeatherData = weatherData
-                    self.savedCitiesResponse.append(weatherData)
-                    self.updateUI()
-                    self.showAlert(text: city)
-                }
+        guard let cityName = searchTextField.text else { return }
+        getWeatherFor(query: cityName) { weatherData, error in
+            if let weatherData = weatherData {
+                self.currentCityWeatherData = weatherData
+                self.savedCitiesResponse.append(weatherData)
+                self.updateUI()
+                self.showAlert(text: cityName)
             }
         }
     }
     
     func showAlert(text: String) {
         DispatchQueue.main.async {
-            let vc = UIAlertController(title: "City Added", message: text, preferredStyle: .alert)
+            let vc = UIAlertController(title: "City Added to City List", message: text, preferredStyle: .alert)
             let action = UIAlertAction(title: "ok", style: .default, handler: nil)
             vc.addAction(action)
             self.present(vc, animated: true, completion: nil)
