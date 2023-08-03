@@ -88,16 +88,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.tempratureLabel.text = "\(currentCityWeatherData.current?.tempC ?? 0)"
             self.cityName.text = currentCityWeatherData.location?.name ?? ""
             self.weatherImage.image = getImage(weatherCode: currentCityWeatherData.current?.condition?.code ?? 0)
-        } 
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .notDetermined:
-            break
-        case .restricted:
-            break
-        case .denied:
+        case .notDetermined, .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse, .authorized:
             guard let lat = loc?.location?.coordinate.latitude,

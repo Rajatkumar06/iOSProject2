@@ -25,7 +25,7 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let weather = savedCitiesResponse[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityWeatherTableViewCell", for: indexPath) as? CityWeatherTableViewCell else { return UITableViewCell() }
-        cell.name.text = (weather.location?.name ?? "") + " Temap: " + "\(weather.current?.tempC ?? 0) C"
+        cell.name.text = (weather.location?.name ?? "") + " Temp: " + "\(weather.current?.tempC ?? 0) C"
         cell.imageVIew.image = getImage(weatherCode: weather.current?.condition?.code ?? 0)
         return cell
     }
