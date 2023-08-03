@@ -87,7 +87,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.weatherConditionLabel.text = currentCityWeatherData.current?.condition?.text ?? ""
             self.tempratureLabel.text = "\(currentCityWeatherData.current?.tempC ?? 0)"
             self.cityName.text = currentCityWeatherData.location?.name ?? ""
-            self.weatherImage.image = getImage(weatherCode: currentCityWeatherData.current?.condition?.code ?? 0)
+            self.weatherImage.image = getWeatherImage(weatherCode: currentCityWeatherData.current?.condition?.code ?? 0)
         }
     }
     
@@ -126,7 +126,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-func getImage(weatherCode: Int) -> UIImage? {
+func getWeatherImage(weatherCode: Int) -> UIImage? {
     switch weatherCode {
     case 1066, 1072, 1147, 1168, 1171, 1210, 1213, 1216:
         return UIImage(systemName: "snowflake")
