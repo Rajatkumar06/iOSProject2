@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var weatherConditionLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
@@ -16,13 +16,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var tempratureLabel: UILabel!
     
     var currentCityWeatherData: Model?
-    var loc: CLLocationManager?
+    var locationManager: CLLocationManager?
     var savedCitiesResponse: [Model] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loc = CLLocationManager()
-        loc?.delegate = self
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
     }
     
     @IBAction func citiesButtonTapped(_ sender: Any) {
@@ -32,7 +32,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "citiesSegue",
               let desination = segue.destination as? CityViewController else { return }
-        desination.savedCitiesResponse = savedCitiesResponse
+        desination.dataSource = savedCitiesResponse
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -49,18 +49,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func showAlert(text: String) {
         DispatchQueue.main.async {
-            let vc = UIAlertController(title: "City Added to City List", message: text, preferredStyle: .alert)
-            let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-            vc.addAction(action)
-            self.present(vc, animated: true, completion: nil)
+            let viewController = UIAlertController(title: "City Added to City List", message: text, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            viewController.addAction(action)
+            self.present(viewController, animated: true, completion: nil)
         }
       }
     
     @IBAction func locationButtonTapped(_ sender: Any) {
-        loc?.requestAlwaysAuthorization()
+        locationManager?.requestAlwaysAuthorization()
         
-        guard let lat = loc?.location?.coordinate.latitude,
-              let lon = loc?.location?.coordinate.longitude else { return }
+        guard let lat = locationManager?.location?.coordinate.latitude,
+              let lon = locationManager?.location?.coordinate.longitude else { return }
         getWeatherFor(query: "\(lat),\(lon)") { weatherData, error in
             if let weatherData = weatherData {
                 self.currentCityWeatherData = weatherData
@@ -96,8 +96,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case .notDetermined, .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse, .authorized:
-            guard let lat = loc?.location?.coordinate.latitude,
-                  let lon = loc?.location?.coordinate.longitude else { return }
+            guard let lat = locationManager?.location?.coordinate.latitude,
+                  let lon = locationManager?.location?.coordinate.longitude else { return }
             getWeatherFor(query: "\(lat),\(lon)") { weatherData, error in
                 if let weatherData = weatherData {
                     self.currentCityWeatherData = weatherData
