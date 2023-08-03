@@ -10,7 +10,7 @@ import UIKit
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var listTableView: UITableView!
-    var savedCitiesResponse: [Model] = []
+    var dataSource: [Model] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,11 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        savedCitiesResponse.count
+        dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let weather = savedCitiesResponse[indexPath.row]
+        let weather = dataSource[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityWeatherTableViewCell", for: indexPath) as? CityWeatherTableViewCell else { return UITableViewCell() }
         cell.name.text = (weather.location?.name ?? "") + " Temp: " + "\(weather.current?.tempC ?? 0) C"
         cell.imageVIew.image = getWeatherImage(weatherCode: weather.current?.condition?.code ?? 0)
