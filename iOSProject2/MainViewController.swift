@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var weatherConditionLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
@@ -49,10 +49,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func showAlert(text: String) {
         DispatchQueue.main.async {
-            let vc = UIAlertController(title: "City Added to City List", message: text, preferredStyle: .alert)
-            let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-            vc.addAction(action)
-            self.present(vc, animated: true, completion: nil)
+            let viewController = UIAlertController(title: "City Added to City List", message: text, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            viewController.addAction(action)
+            self.present(viewController, animated: true, completion: nil)
         }
       }
     
