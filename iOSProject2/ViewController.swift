@@ -109,6 +109,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if let weatherData = weatherData {
                     self.currentCityWeatherData = weatherData
                     self.updateUI()
+                    self.savedCitiesResponse.append(weatherData)
+                    self.showAlert(text: self.currentCityWeatherData?.location?.name ?? "")
                 }
             }
         @unknown default:
