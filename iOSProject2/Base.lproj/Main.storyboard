@@ -128,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="48" y="-2"/>
         </scene>
-        <!--View Controller-->
+        <!--City View Controller-->
         <scene sceneID="noR-BA-dhf">
             <objects>
-                <viewController id="Y84-br-BfB" sceneMemberID="viewController">
+                <viewController id="Y84-br-BfB" customClass="CityViewController" customModule="iOSProject2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KnJ-qY-ILR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +140,7 @@
                                 <rect key="frame" x="0.0" y="100" width="393" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Whe-EE-4KN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CityWeatherTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityWeatherTableViewCell" id="Whe-EE-4KN" customClass="CityWeatherTableViewCell" customModule="iOSProject2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="50.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Whe-EE-4KN" id="e1T-oG-Lc8">
@@ -169,6 +169,10 @@
                                                 <constraint firstItem="b3i-Oa-K9R" firstAttribute="top" secondItem="e1T-oG-Lc8" secondAttribute="top" id="rtq-DY-r2g"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageVIew" destination="b3i-Oa-K9R" id="etw-d3-jwA"/>
+                                            <outlet property="name" destination="MXc-cj-jZq" id="gD5-mv-DZP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -191,6 +195,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kud-mK-gZy"/>
+                    <connections>
+                        <outlet property="listTableView" destination="jV9-So-Iib" id="UYm-5y-s6L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQ1-nh-Jdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

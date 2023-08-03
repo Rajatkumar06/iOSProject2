@@ -14,6 +14,8 @@
 		57319DCC2A7B2955004C1C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57319DCB2A7B2955004C1C7E /* Assets.xcassets */; };
 		57319DCF2A7B2955004C1C7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57319DCD2A7B2955004C1C7E /* LaunchScreen.storyboard */; };
 		57319DD72A7B31EA004C1C7E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57319DD62A7B31EA004C1C7E /* Model.swift */; };
+		57319DD92A7B38F3004C1C7E /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57319DD82A7B38F3004C1C7E /* CityViewController.swift */; };
+		57319DDB2A7B39E2004C1C7E /* CityWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57319DDA2A7B39E2004C1C7E /* CityWeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		57319DCE2A7B2955004C1C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57319DD02A7B2955004C1C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57319DD62A7B31EA004C1C7E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		57319DD82A7B38F3004C1C7E /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		57319DDA2A7B39E2004C1C7E /* CityWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 				57319DC22A7B2952004C1C7E /* AppDelegate.swift */,
 				57319DC42A7B2952004C1C7E /* SceneDelegate.swift */,
 				57319DC62A7B2952004C1C7E /* ViewController.swift */,
+				57319DD82A7B38F3004C1C7E /* CityViewController.swift */,
 				57319DD62A7B31EA004C1C7E /* Model.swift */,
 				57319DC82A7B2952004C1C7E /* Main.storyboard */,
+				57319DDA2A7B39E2004C1C7E /* CityWeatherTableViewCell.swift */,
 				57319DCB2A7B2955004C1C7E /* Assets.xcassets */,
 				57319DCD2A7B2955004C1C7E /* LaunchScreen.storyboard */,
 				57319DD02A7B2955004C1C7E /* Info.plist */,
@@ -142,6 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				57319DC72A7B2952004C1C7E /* ViewController.swift in Sources */,
+				57319DDB2A7B39E2004C1C7E /* CityWeatherTableViewCell.swift in Sources */,
+				57319DD92A7B38F3004C1C7E /* CityViewController.swift in Sources */,
 				57319DC32A7B2952004C1C7E /* AppDelegate.swift in Sources */,
 				57319DC52A7B2952004C1C7E /* SceneDelegate.swift in Sources */,
 				57319DD72A7B31EA004C1C7E /* Model.swift in Sources */,

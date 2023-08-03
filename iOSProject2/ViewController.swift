@@ -31,7 +31,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "citiesSegue" {
-
+            if let desination = segue.destination as? CityViewController {
+                desination.savedCitiesResponse = savedCitiesResponse
+            }
         }
     }
     
@@ -42,10 +44,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.currentCityWeatherData = weatherData
                     self.savedCitiesResponse.append(weatherData)
                     self.updateUI()
+                    self.showAlert(text: city)
                 }
             }
         }
     }
+    
+    func showAlert(text: String) {
+        DispatchQueue.main.async {
+            let vc = UIAlertController(title: "City Added", message: text, preferredStyle: .alert)
+            let action = UIAlertAction(title: "ok", style: .default, handler: nil)
+            vc.addAction(action)
+            self.present(vc, animated: true, completion: nil)
+        }
+      }
     
     @IBAction func locationButtonTapped(_ sender: Any) {
         loc?.requestAlwaysAuthorization()
@@ -57,6 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.currentCityWeatherData = weatherData
                 self.savedCitiesResponse.append(weatherData)
                 self.updateUI()
+                self.showAlert(text: self.currentCityWeatherData?.location?.name ?? "")
             }
         }
     }
