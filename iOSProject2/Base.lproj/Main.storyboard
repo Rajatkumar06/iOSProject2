@@ -121,6 +121,7 @@
                         <outlet property="tempratureLabel" destination="iQH-sY-qYz" id="ha7-yG-IEY"/>
                         <outlet property="weatherConditionLabel" destination="yJG-lh-WFk" id="7r6-kS-uz7"/>
                         <outlet property="weatherImage" destination="0ZX-S6-8hY" id="Rec-OM-bu8"/>
+                        <segue destination="Y84-br-BfB" kind="show" identifier="citiesSegue" id="12z-eP-JZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -132,11 +133,11 @@
             <objects>
                 <viewController id="Y84-br-BfB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KnJ-qY-ILR">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jV9-So-Iib">
-                                <rect key="frame" x="0.0" y="159" width="393" height="659"/>
+                                <rect key="frame" x="0.0" y="100" width="393" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Whe-EE-4KN">
@@ -172,7 +173,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Cities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX8-Ff-TXj">
-                                <rect key="frame" x="20" y="79" width="244" height="55"/>
+                                <rect key="frame" x="20" y="20" width="244" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                 <color key="textColor" systemColor="linkColor"/>
                                 <nil key="highlightedColor"/>
@@ -189,6 +190,7 @@
                             <constraint firstItem="0Jl-Z9-aRG" firstAttribute="bottom" secondItem="jV9-So-Iib" secondAttribute="bottom" id="tlr-x8-0gz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="kud-mK-gZy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQ1-nh-Jdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

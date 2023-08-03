@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentCityWeatherData: Model?
     var loc: CLLocationManager?
+    var savedCitiesResponse: [Model] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func citiesButtonTapped(_ sender: Any) {
-        
+        performSegue(withIdentifier: "citiesSegue", sender: self)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "citiesSegue" {
+
+        }
+    }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
+        if let city = searchTextField.text {
+            getWeatherFor(query: city) { weatherData, error in
+                if let weatherData = weatherData {
+                    self.currentCityWeatherData = weatherData
+                    self.savedCitiesResponse.append(weatherData)
+                    self.updateUI()
+                }
+            }
+        }
     }
     
     @IBAction func locationButtonTapped(_ sender: Any) {
@@ -41,6 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         getWeatherFor(query: "\(lat),\(lon)") { weatherData, error in
             if let weatherData = weatherData {
                 self.currentCityWeatherData = weatherData
+                self.savedCitiesResponse.append(weatherData)
                 self.updateUI()
             }
         }
